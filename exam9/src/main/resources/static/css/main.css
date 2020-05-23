@@ -1,0 +1,89 @@
+html, body {
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    background-color: #f8fafb;
+}
+
+.container {
+    max-width: 1280px;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-justify-content-center {
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase;
+}
+
+.box-128 {
+    flex-basis: 128px;
+    height: 128px;
+    border: 1px solid black;
+    background-color: lightblue;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+
+}
+
+.box-128:hover {
+    transition-duration: 0.3s;
+    transition-property: background-color;
+    background-color: darkblue;
+    color: white;
+}
+
+.label-input-text {
+    flex-basis: 200px;
+}
+
+.logout-button {
+    border: none;
+    background-color:transparent;
+    font-size: inherit;
+    text-transform: uppercase;
+    font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.bottom-box {
+    padding-top: 30px;
+    background-color: lightblue;
+}
+
+.bottom-box:hover {
+    transition-duration: 0.3s;
+    transition-property: background-color;
+    background-color: lightcyan;
+    color: white;
+}
+/*div.scrollup {*/
+/*    position: fixed; !* фиксированная позиция *!*/
+/*    color: #fff; !* цвет текста *!*/
+/*    background-color: #286090; !* цвет заднего фона *!*/
+/*    right: 20px; !* расстояние от правого края *!*/
+/*    bottom: 0px; !* расстояние от нижнего края *!*/
+/*    padding: 4px 10px; !* отступы до содержимого блока *!*/
+/*    font-size: 20px; !* размер шрифта (иконки) *!*/
+/*    border-top-left-radius: 4px; !* скругление верхнего левого угла *!*/
+/*    border-top-right-radius: 4px; !* скругление верхнего правого угла *!*/
+/*    cursor: pointer; !* форма курсора *!*/
+/*    display: none; !* не отображать элемент *!*/
+/*    text-align: center; !*выравнивание содержимого элемента по центру *!*/
+/*}*/
+/*div.scrollup:hover {*/
+/*    background-color: #000; !* цвет заднего фона при наведении *!*/
+/*}*/
