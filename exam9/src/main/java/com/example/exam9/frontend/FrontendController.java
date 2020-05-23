@@ -9,8 +9,10 @@ import com.example.exam9.domain.theme.ThemeRepository;
 import com.example.exam9.domain.theme.ThemeService;
 import com.example.exam9.domain.user.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +44,8 @@ public class FrontendController {
     private final ResetRepository resetRepository;
     private final ThemeRepository themeRepository;
     private final CommentRepository commentRepository;
+    @Autowired
+    RestTemplate restTemplate;
 
     private static <T> void constructPageable(Page<T> list, int pageSize, Model model, String uri) {
         if (list.hasNext()) {
@@ -99,9 +104,11 @@ public class FrontendController {
     @PostMapping("/register")
     public String registerPage(@Valid UserRegisterForm userRequestDto,
                                BindingResult validationResult,
-                               RedirectAttributes attributes) {
+                               RedirectAttributes attributes, @RequestParam(name = "g-recaptcha-response") String captchaResponse) {
         attributes.addFlashAttribute("dto", userRequestDto);
-
+        String url = "https://www.google.com/recaptcha/api/siteverify";
+        String params = "?secret=6LfeMvcUAAAAADN-fheeuDZ8mISg78nVjdXNle61&response="+captchaResponse;
+        ReCaptchaResponse reCaptchaResponse = restTemplate.exchange(url+params, HttpMethod.POST,null,ReCaptchaResponse.class).getBody();
         if (validationResult.hasFieldErrors()) {
             attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
             return "redirect:/register";

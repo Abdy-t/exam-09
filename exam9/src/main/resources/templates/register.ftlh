@@ -3,6 +3,7 @@
 <@main.renderWith>
     <h2>Please register</h2>
     <div>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <form action="/register" method="post">
 
         <#if _csrf??>
@@ -27,6 +28,8 @@
                 <input type="text" name="password" placeholder="пароль"  value="">
             </label>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LfeMvcUAAAAAI3vO7wjoBgm3sksNNv38pREfCeA"></div>
+        <div>
         <div>
             <button type="submit">Регистрация</button>
         </div>
